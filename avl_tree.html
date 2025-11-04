@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AVL Tree Visualizer</title>
+    <link rel="stylesheet" href="avl_tree.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🌳 AVL Tree Visualizer</h1>
+            <p class="subtitle">Interactive Self-Balancing Binary Search Tree</p>
+            <button class="info-button" id="infoBtn">ℹ</button>
+        </div>
+
+        <!-- Info Panel -->
+        <div class="info-panel" id="infoPanel">
+            <h3>📚 About AVL Trees</h3>
+            <p>An AVL tree is a self-balancing binary search tree where the heights of left and right subtrees differ by at most 1.</p>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Balance Factor (BF)</h4>
+                    <p>Height(Left) - Height(Right)</p>
+                    <p class="formula">BF ∈ {-1, 0, 1}</p>
+                </div>
+                <div class="info-card">
+                    <h4>Rotations</h4>
+                    <ul>
+                        <li>Right Rotation: Left-Left case</li>
+                        <li>Left Rotation: Right-Right case</li>
+                        <li>Left-Right: Left-Right case</li>
+                        <li>Right-Left: Right-Left case</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <div class="control-row">
+                <div class="input-group">
+                    <input type="number" id="valueInput" placeholder="Enter a number (0-99)" min="0" max="99">
+                </div>
+                <button class="btn-insert" id="insertBtn">
+                    <span class="btn-icon">➕</span> Insert
+                </button>
+                <button class="btn-delete" id="deleteBtn">
+                    <span class="btn-icon">➖</span> Delete
+                </button>
+                <button class="btn-random" id="randomBtn">
+                    <span class="btn-icon">🎲</span> Random
+                </button>
+            </div>
+
+            <div class="control-row">
+                <button class="btn-play" id="playBtn">
+                    <span class="btn-icon">▶</span> Play
+                </button>
+                <button class="btn-reset" id="resetBtn">
+                    <span class="btn-icon">🔄</span> Reset
+                </button>
+                <div class="speed-control">
+                    <label>⚡ Speed:</label>
+                    <input type="range" id="speedSlider" min="200" max="2000" step="200" value="1000">
+                    <span id="speedValue">1000ms</span>
+                </div>
+            </div>
+
+            <!-- Message Box -->
+            <div class="message-box" id="messageBox"></div>
+        </div>
+
+        <!-- Canvas Container -->
+        <div class="canvas-container">
+            <canvas id="treeCanvas" width="1200" height="600"></canvas>
+        </div>
+
+        <!-- Statistics -->
+        <div class="statistics">
+            <div class="stat-card stat-height">
+                <div class="stat-icon">📏</div>
+                <div class="stat-value" id="statHeight">0</div>
+                <div class="stat-label">Height</div>
+            </div>
+            <div class="stat-card stat-step">
+                <div class="stat-icon">👣</div>
+                <div class="stat-value"><span id="statCurrentStep">0</span>/<span id="statTotalSteps">0</span></div>
+                <div class="stat-label">Steps</div>
+            </div>
+            <div class="stat-card stat-rotation">
+                <div class="stat-icon">🔄</div>
+                <div class="stat-value" id="statRotations">0</div>
+                <div class="stat-label">Rotations</div>
+            </div>
+            <div class="stat-card stat-status">
+                <div class="stat-icon">⚡</div>
+                <div class="stat-value" id="statStatus">⏸️</div>
+                <div class="stat-label">Status</div>
+            </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color balanced"></div>
+                <span>Balanced Node</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color unbalanced"></div>
+                <span>Unbalanced Node</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color highlighted"></div>
+                <span>Current Operation</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="avl_tree.js"></script>
+</body>
+</html>
